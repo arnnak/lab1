@@ -29,18 +29,18 @@ public class SecondActivity extends AppCompatActivity {
         List<ListItem> items = new ArrayList<>();
         Intent intent = getIntent();
         if(intent.getBooleanExtra("flag",true)){
-            items.add(new ListItem("Jack",R.drawable.a,"Mathematics, Chemistry"));
-            items.add(new ListItem("Jane",R.drawable.a,"Physics, Informatics"));
-            items.add(new ListItem("Bob",R.drawable.a,"Mathematics, Informatics"));
-            items.add(new ListItem("Clara",R.drawable.a,"Geography, Chemistry"));
-            items.add(new ListItem("Sam",R.drawable.a,"Mathematics, Physics"));
+            items.add(new ListItem("Jack",R.drawable.ic_3d_rotation_black_24dp,"Mathematics, Chemistry"));
+            items.add(new ListItem("Jane",R.drawable.ic_announcement_black_24dp,"Physics, Informatics"));
+            items.add(new ListItem("Bob",R.drawable.ic_access_alarm_black_24dp,"Mathematics, Informatics"));
+            items.add(new ListItem("Clara",R.drawable.ic_account_box_black_24dp,"Geography, Chemistry"));
+            items.add(new ListItem("Sam",R.drawable.ic_accessibility_black_24dp,"Mathematics, Physics"));
         }
         else{
-            items.add(new ListItem("Mathematics",R.drawable.a,"Mathematics is the study of topics such as quantity structure, space and change."));
-            items.add(new ListItem("Physics", R.drawable.a, "Physics is the natural science that involves the study of matter and its motion through space and time along with related concepts such as energy and forme"));
-            items.add(new ListItem("Chemistry",R.drawable.a,"Chemistry is a branch of physical science thet studies the composition, structure, properties and change of matter."));
-            items.add(new ListItem("Informatics", R.drawable.a, "Informatics is the science of informatic and computer information systems."));
-            items.add(new ListItem("Geography", R.drawable.a,"geography is a field of science devoted to the study of the lands, the features, the inhabitant, and the phenomena of Earth"));
+            items.add(new ListItem("Mathematics",R.drawable.ic_3d_rotation_black_24dp,"Mathematics is the study of topics such as quantity structure, space and change."));
+            items.add(new ListItem("Physics", R.drawable.ic_announcement_black_24dp, "Physics is the natural science that involves the study of matter and its motion through space and time along with related concepts such as energy and forme"));
+            items.add(new ListItem("Chemistry",R.drawable.ic_access_alarm_black_24dp,"Chemistry is a branch of physical science thet studies the composition, structure, properties and change of matter."));
+            items.add(new ListItem("Informatics", R.drawable.ic_account_box_black_24dp, "Informatics is the science of informatic and computer information systems."));
+            items.add(new ListItem("Geography", R.drawable.ic_accessibility_black_24dp,"geography is a field of science devoted to the study of the lands, the features, the inhabitant, and the phenomena of Earth"));
         }
         adapter = new ListAdapter(this,items);
         mylist.setAdapter(adapter);
