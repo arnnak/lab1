@@ -28,7 +28,8 @@ public class SecondActivity extends AppCompatActivity {
         List<ListItem> items = new ArrayList<>();
         Intent intent = getIntent();
         if(intent.getBooleanExtra("flag",true)){
-            //items = (List<ListItem>) intent.getExtras().getParcelableArrayList("list");
+            Bundle bundle = intent.getExtras();
+            items = (List<ListItem>) bundle.getSerializable("list");
         }
         else{
             items.add(new ListItem("Mathematics",R.drawable.ic_3d_rotation_black_24dp,"Mathematics is the study of topics such as quantity structure, space and change."));
