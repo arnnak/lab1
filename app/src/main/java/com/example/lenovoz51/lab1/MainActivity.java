@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.Serializable;
@@ -19,17 +20,24 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private Button secondActivityButton;
     private Context context = this;
-    private List<ListItem> items;
+    private List<ListItem> items, nauji;
+    private EditText pavadinimas;
+    private EditText aprasymas;
+    private Button prideti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         items = new ArrayList<>();
+        nauji = new ArrayList<>();
         //button = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.textView);
+        pavadinimas = (EditText) findViewById(R.id.pavadinimas);
+        aprasymas = (EditText) findViewById(R.id.pavadinimas);
+        prideti = (Button) findViewById(R.id.prideti);
         secondActivityButton = (Button) findViewById(R.id.secondActivityButton);
-
+        prideti.setOnClickListener(pridetiClick);
         //button.setOnClickListener(buttonClick);
         secondActivityButton.setOnClickListener(startSecondActivity);
         secondActivityButton.setOnLongClickListener(startSecondActivityLong);
@@ -41,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(textView.getText()+"\n"+"Next line");
         }
     };*/
+
+    View.OnClickListener pridetiClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            nauji.add(new ListItem(pavadinimas.getText().toString(),R.drawable.ic_3d_rotation_black_24dp,aprasymas.getText().toString()));
+        }
+    };
 
     View.OnClickListener startSecondActivity = new View.OnClickListener(){
         @Override
@@ -73,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("flag",b);
         Bundle bundle = new Bundle();
         bundle.putSerializable("list", (Serializable) items);
+        bundle.putSerializable("nauji", (Serializable) nauji);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
