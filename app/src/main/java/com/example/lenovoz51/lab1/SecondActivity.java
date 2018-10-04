@@ -22,18 +22,13 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.secondactivitydesign);
 
         mylist = (ListView) findViewById(R.id.listView);
-
         List<ListItem> items = new ArrayList<>();
         Intent intent = getIntent();
         if(intent.getBooleanExtra("flag",true)){
-            items.add(new ListItem("Jack",R.drawable.ic_3d_rotation_black_24dp,"Mathematics, Chemistry"));
-            items.add(new ListItem("Jane",R.drawable.ic_announcement_black_24dp,"Physics, Informatics"));
-            items.add(new ListItem("Bob",R.drawable.ic_access_alarm_black_24dp,"Mathematics, Informatics"));
-            items.add(new ListItem("Clara",R.drawable.ic_account_box_black_24dp,"Geography, Chemistry"));
-            items.add(new ListItem("Sam",R.drawable.ic_accessibility_black_24dp,"Mathematics, Physics"));
+            //items = (List<ListItem>) intent.getExtras().getParcelableArrayList("list");
         }
         else{
             items.add(new ListItem("Mathematics",R.drawable.ic_3d_rotation_black_24dp,"Mathematics is the study of topics such as quantity structure, space and change."));
