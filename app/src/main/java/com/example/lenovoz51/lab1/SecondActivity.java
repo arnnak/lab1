@@ -1,13 +1,19 @@
 package com.example.lenovoz51.lab1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import org.xml.sax.helpers.AttributeListImpl;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -17,7 +23,13 @@ import java.util.List;
 public class SecondActivity extends AppCompatActivity {
 
     private ListView mylist;
+    private Context context = this;
     private ListAdapter adapter;
+    private Button rikiuoti, atrinkti;
+    private List<ListItem> items;
+    private EditText raide;
+    private List<ListItem> atrinktasSarasas;
+    private ListAdapter atrinkimui;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +37,10 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.secondactivitydesign);
 
         mylist = (ListView) findViewById(R.id.listView);
-        List<ListItem> items = new ArrayList<>();
+        rikiuoti = (Button) findViewById(R.id.rikiavimo);
+        atrinkti = (Button) findViewById(R.id.atrinkimo);
+        items = new ArrayList<>();
+        atrinktasSarasas = new ArrayList<>();
         List<ListItem> nauji = new ArrayList<>();
         Intent intent = getIntent();
         if(intent.getBooleanExtra("flag",true)){
@@ -54,7 +69,44 @@ public class SecondActivity extends AppCompatActivity {
         }
         adapter = new ListAdapter(this,items);
         mylist.setAdapter(adapter);
+        rikiuoti.setOnClickListener(rikiuoticlick);
+        atrinkti.setOnClickListener(atrinkticlick);
     }
 
+    View.OnClickListener rikiuoticlick = new View.OnClickListener(){
+        @Override
+        public void onClick(View v){
+            Rikiuoti();
+        }
+    };
+
+    View.OnClickListener atrinkticlick = new View.OnClickListener(){
+        @Override
+        public void onClick(View v){
+            atrinkti();
+            atrinkimui = new ListAdapter(context, atrinktasSarasas);
+            mylist.setAdapter((atrinkimui));
+        }
+    };
+
+    private void Rikiuoti (){
+        Collections.sort(items, new Comparator<ListItem>() {
+            @Override
+            public int compare(ListItem listItem, ListItem t1) {
+                return listItem.getTitle().compareTo(t1.getTitle());
+            }
+        });
+        adapter.notifyDataSetChanged();
+    }
+
+    private void atrinkti(){
+       char [] r = raide.getText().toString().toCharArray();
+       for (int i = 0; i < items.size(); i++){
+           char [] raides = items.get(i).getTitle().toCharArray();
+           if (raides[0] == r[0]){
+               atrinktasSarasas.add(items.get(i));
+           }
+       }
+    }
 
 }

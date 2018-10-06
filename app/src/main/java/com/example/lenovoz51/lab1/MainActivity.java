@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText pavadinimas;
     private EditText aprasymas;
     private Button prideti;
+    private Button paveikslelis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +37,12 @@ public class MainActivity extends AppCompatActivity {
         pavadinimas = (EditText) findViewById(R.id.pavadinimas);
         aprasymas = (EditText) findViewById(R.id.pavadinimas);
         prideti = (Button) findViewById(R.id.prideti);
+        paveikslelis = (Button) findViewById(R.id.paveikslelio_activity);
         secondActivityButton = (Button) findViewById(R.id.secondActivityButton);
         prideti.setOnClickListener(pridetiClick);
         //button.setOnClickListener(buttonClick);
         secondActivityButton.setOnClickListener(startSecondActivity);
+        paveikslelis.setOnClickListener(paveikslelisClick);
         secondActivityButton.setOnLongClickListener(startSecondActivityLong);
     }
 
@@ -54,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             nauji.add(new ListItem(pavadinimas.getText().toString(),R.drawable.ic_3d_rotation_black_24dp,aprasymas.getText().toString()));
+        }
+    };
+
+    View.OnClickListener paveikslelisClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(context, PictureActivity.class);
+            context.startActivity(intent);
         }
     };
 
