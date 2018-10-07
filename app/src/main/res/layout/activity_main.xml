@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
@@ -7,75 +7,90 @@
     android:layout_height="match_parent"
     tools:context="com.example.lenovoz51.lab1.MainActivity">
 
-    <Button
-        android:id="@+id/secondActivityButton"
-        android:layout_width="168dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
-        android:text="@string/secondActivityButton"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="188dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="28dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/pavadinimas"
-        tools:layout_editor_absoluteX="0dp" />
+        <Button
+            android:id="@+id/secondActivityButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="60dp"
+            android:text="@string/secondActivityButton"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.531" />
 
-    <EditText
-        android:id="@+id/pavadinimas"
-        android:layout_width="137dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Pavadinimas"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="276dp" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginBottom="28dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/pavadinimas"
+            tools:layout_editor_absoluteX="0dp" />
 
-    <EditText
-        android:id="@+id/aprasymas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Aprasymas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/pavadinimas"
-        tools:layout_editor_absoluteY="276dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/prideti"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
-        android:text="Prideti"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.46"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aprasymas" />
+            <EditText
+                android:id="@+id/pavadinimas"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Pavadinimas"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="276dp" />
 
-    <Button
-        android:id="@+id/paveikslelio_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Paveikslelis"
-        app:layout_constraintTop_toBottomOf="@+id/prideti"
-        tools:layout_editor_absoluteX="122dp" />
+            <EditText
+                android:id="@+id/aprasymas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Aprasymas"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/pavadinimas"
+                tools:layout_editor_absoluteY="276dp" />
 
-</android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/prideti"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="60dp"
+            android:text="Prideti"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.46"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aprasymas" />
+
+        <Button
+            android:id="@+id/paveikslelio_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Paveikslelis"
+            app:layout_constraintTop_toBottomOf="@+id/prideti"
+            tools:layout_editor_absoluteX="122dp" />
+    </LinearLayout>
+
+</LinearLayout>

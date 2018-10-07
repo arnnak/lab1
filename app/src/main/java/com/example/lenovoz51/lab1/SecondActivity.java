@@ -23,7 +23,7 @@ import java.util.List;
 public class SecondActivity extends AppCompatActivity {
 
     private ListView mylist;
-    private Context context = this;
+    private Context context;
     private ListAdapter adapter;
     private Button rikiuoti, atrinkti;
     private List<ListItem> items;
@@ -41,6 +41,8 @@ public class SecondActivity extends AppCompatActivity {
         atrinkti = (Button) findViewById(R.id.atrinkimo);
         items = new ArrayList<>();
         atrinktasSarasas = new ArrayList<>();
+        context = this;
+        raide = (EditText) findViewById(R.id.salyga);
         List<ListItem> nauji = new ArrayList<>();
         Intent intent = getIntent();
         if(intent.getBooleanExtra("flag",true)){
@@ -85,7 +87,7 @@ public class SecondActivity extends AppCompatActivity {
         public void onClick(View v){
             atrinkti();
             atrinkimui = new ListAdapter(context, atrinktasSarasas);
-            mylist.setAdapter((atrinkimui));
+            mylist.setAdapter(atrinkimui);
         }
     };
 
@@ -101,6 +103,7 @@ public class SecondActivity extends AppCompatActivity {
 
     private void atrinkti(){
        char [] r = raide.getText().toString().toCharArray();
+       atrinktasSarasas = new ArrayList<>();
        for (int i = 0; i < items.size(); i++){
            char [] raides = items.get(i).getTitle().toCharArray();
            if (raides[0] == r[0]){
