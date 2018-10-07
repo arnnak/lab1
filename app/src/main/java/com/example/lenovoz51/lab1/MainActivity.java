@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         //button = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.textView);
         pavadinimas = (EditText) findViewById(R.id.pavadinimas);
-        aprasymas = (EditText) findViewById(R.id.pavadinimas);
+        aprasymas = (EditText) findViewById(R.id.aprasymas);
         prideti = (Button) findViewById(R.id.prideti);
         paveikslelis = (Button) findViewById(R.id.paveikslelio_activity);
         secondActivityButton = (Button) findViewById(R.id.secondActivityButton);

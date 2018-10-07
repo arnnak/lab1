@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.xml.sax.helpers.AttributeListImpl;
 
@@ -69,10 +70,11 @@ public class SecondActivity extends AppCompatActivity {
                 }
             }
         }
-        adapter = new ListAdapter(this,items);
-        mylist.setAdapter(adapter);
         rikiuoti.setOnClickListener(rikiuoticlick);
         atrinkti.setOnClickListener(atrinkticlick);
+        adapter = new ListAdapter(this,items);
+        adapter.notifyDataSetChanged();
+        mylist.setAdapter(adapter);
     }
 
     View.OnClickListener rikiuoticlick = new View.OnClickListener(){
@@ -88,6 +90,7 @@ public class SecondActivity extends AppCompatActivity {
             atrinkti();
             atrinkimui = new ListAdapter(context, atrinktasSarasas);
             mylist.setAdapter(atrinkimui);
+            Toast.makeText(context,"Atrinkimas baigtas", Toast.LENGTH_LONG).show();
         }
     };
 
@@ -102,10 +105,10 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     private void atrinkti(){
-       char [] r = raide.getText().toString().toCharArray();
+       char [] r = raide.getText().toString().toLowerCase().toCharArray();
        atrinktasSarasas = new ArrayList<>();
        for (int i = 0; i < items.size(); i++){
-           char [] raides = items.get(i).getTitle().toCharArray();
+           char [] raides = items.get(i).getTitle().toLowerCase().toCharArray();
            if (raides[0] == r[0]){
                atrinktasSarasas.add(items.get(i));
            }
