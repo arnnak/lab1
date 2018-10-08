@@ -31,6 +31,7 @@ public class SecondActivity extends AppCompatActivity {
     private EditText raide;
     private List<ListItem> atrinktasSarasas;
     private ListAdapter atrinkimui;
+    private List<ListItem> nauji;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +45,14 @@ public class SecondActivity extends AppCompatActivity {
         atrinktasSarasas = new ArrayList<>();
         context = this;
         raide = (EditText) findViewById(R.id.salyga);
-        List<ListItem> nauji = new ArrayList<>();
+        nauji = new ArrayList<>();
         Intent intent = getIntent();
         if(intent.getBooleanExtra("flag",true)){
             Bundle bundle = intent.getExtras();
-            items = (List<ListItem>) bundle.getSerializable("list");
-            nauji = (List<ListItem>) bundle.getSerializable("nauji");
+            nauji = (List<ListItem>) bundle.getSerializable("list");
             if(nauji.size() != 0){
                 for(int i = 0; i<nauji.size(); i++){
-                    items.add(nauji.get(i));
+                        items.add(nauji.get(i));
                 }
             }
         }
@@ -63,18 +63,18 @@ public class SecondActivity extends AppCompatActivity {
             items.add(new ListItem("Chemistry",R.drawable.ic_access_alarm_black_24dp,"Chemistry is a branch of physical science thet studies the composition, structure, properties and change of matter."));
             items.add(new ListItem("Informatics", R.drawable.ic_account_box_black_24dp, "Informatics is the science of informatic and computer information systems."));
             items.add(new ListItem("Geography", R.drawable.ic_accessibility_black_24dp,"geography is a field of science devoted to the study of the lands, the features, the inhabitant, and the phenomena of Earth"));
-            nauji = (List<ListItem>) bundle.getSerializable("nauji");
+            nauji = (List<ListItem>) bundle.getSerializable("list");
             if(nauji.size() != 0){
                 for(int i = 0; i<nauji.size(); i++){
-                    items.add(nauji.get(i));
+                        items.add(nauji.get(i));
                 }
             }
         }
+        adapter = new ListAdapter(this,items);
+        //adapter.notifyDataSetChanged();
+        mylist.setAdapter(adapter);
         rikiuoti.setOnClickListener(rikiuoticlick);
         atrinkti.setOnClickListener(atrinkticlick);
-        adapter = new ListAdapter(this,items);
-        adapter.notifyDataSetChanged();
-        mylist.setAdapter(adapter);
     }
 
     View.OnClickListener rikiuoticlick = new View.OnClickListener(){
@@ -90,7 +90,6 @@ public class SecondActivity extends AppCompatActivity {
             atrinkti();
             atrinkimui = new ListAdapter(context, atrinktasSarasas);
             mylist.setAdapter(atrinkimui);
-            Toast.makeText(context,"Atrinkimas baigtas", Toast.LENGTH_LONG).show();
         }
     };
 
@@ -98,7 +97,7 @@ public class SecondActivity extends AppCompatActivity {
         Collections.sort(items, new Comparator<ListItem>() {
             @Override
             public int compare(ListItem listItem, ListItem t1) {
-                return listItem.getTitle().compareTo(t1.getTitle());
+                return listItem.getTitle().toLowerCase().compareTo(t1.getTitle().toLowerCase());
             }
         });
         adapter.notifyDataSetChanged();
@@ -107,11 +106,17 @@ public class SecondActivity extends AppCompatActivity {
     private void atrinkti(){
        char [] r = raide.getText().toString().toLowerCase().toCharArray();
        atrinktasSarasas = new ArrayList<>();
-       for (int i = 0; i < items.size(); i++){
-           char [] raides = items.get(i).getTitle().toLowerCase().toCharArray();
-           if (raides[0] == r[0]){
-               atrinktasSarasas.add(items.get(i));
+       if(r.length!=0) {
+           for (int i = 0; i < items.size(); i++) {
+               char[] raides = items.get(i).getTitle().toLowerCase().toCharArray();
+               if (raides[0] == r[0]) {
+                   atrinktasSarasas.add(items.get(i));
+               }
            }
+           Toast.makeText(context,"Atrinkimas baigtas", Toast.LENGTH_LONG).show();
+       }
+       else{
+           Toast.makeText(context,"Iveskite pirmaja raide", Toast.LENGTH_LONG).show();
        }
     }
 

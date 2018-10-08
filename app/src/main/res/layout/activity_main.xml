@@ -49,7 +49,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Pavadinimas"
+                android:hint="Pavadinimas"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="276dp" />
 
@@ -62,7 +62,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Aprasymas"
+                android:hint="Aprasymas"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/pavadinimas"

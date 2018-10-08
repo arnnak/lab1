@@ -18,7 +18,7 @@
             android:layout_marginBottom="8dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Iveskite atrinkimo salyga"
+            android:hint="Iveskite atrinkimo salyga"
             app:layout_constraintBottom_toTopOf="@+id/atrinkimo"
             tools:layout_editor_absoluteX="85dp" />
 
@@ -42,25 +42,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
-        <ScrollView
-            android:id="@+id/scrollView2"
+        <ListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="333dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="0dp">
+            android:layout_height="match_parent" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ListView
-                    android:id="@+id/listView"
-                    android:layout_width="match_parent"
-                    android:layout_height="531dp" />
-            </LinearLayout>
-
-        </ScrollView>
     </LinearLayout>
 
 </LinearLayout>

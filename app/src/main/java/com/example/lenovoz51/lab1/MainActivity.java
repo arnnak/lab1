@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
         pavadinimas = (EditText) findViewById(R.id.pavadinimas);
         aprasymas = (EditText) findViewById(R.id.aprasymas);
         prideti = (Button) findViewById(R.id.prideti);
+        prideti.setOnClickListener(pridetiClick);
         paveikslelis = (Button) findViewById(R.id.paveikslelio_activity);
         secondActivityButton = (Button) findViewById(R.id.secondActivityButton);
-        prideti.setOnClickListener(pridetiClick);
         //button.setOnClickListener(buttonClick);
         secondActivityButton.setOnClickListener(startSecondActivity);
         paveikslelis.setOnClickListener(paveikslelisClick);
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener pridetiClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //items = new ArrayList<>();
             nauji.add(new ListItem(pavadinimas.getText().toString(),R.drawable.ic_3d_rotation_black_24dp,aprasymas.getText().toString()));
         }
     };
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v){
             items = new ArrayList<>();
+            for (int i=0; i<nauji.size(); i++) {
+                items.add(nauji.get(i));
+            }
             items.add(new ListItem("Jack",R.drawable.ic_3d_rotation_black_24dp,"Mathematics, Chemistry"));
             items.add(new ListItem("Jane",R.drawable.ic_announcement_black_24dp,"Physics, Informatics"));
             items.add(new ListItem("Bob",R.drawable.ic_access_alarm_black_24dp,"Mathematics, Informatics"));
@@ -82,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
             items.add(new ListItem("John",R.drawable.ic_accessibility_black_24dp,"Mathematics, Physics"));
             items.add(new ListItem("Ann",R.drawable.ic_accessibility_black_24dp,"Geography, Physics"));
             items.add(new ListItem("Peter",R.drawable.ic_accessibility_black_24dp,"Mathematics, Physics"));
+            /*for (int i=0; i<nauji.size(); i++) {
+                items.add(nauji.get(i));
+            }*/
             runSecondActivity(true);
         }
     };
@@ -98,8 +105,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(context, SecondActivity.class);
         intent.putExtra("flag",b);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("list", (Serializable) items);
-        bundle.putSerializable("nauji", (Serializable) nauji);
+        if(b){
+            bundle.putSerializable("list", (Serializable) items);
+        }
+        else{
+            nauji.add(items.get(0));
+            bundle.putSerializable("list", (Serializable)nauji);
+        }
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
