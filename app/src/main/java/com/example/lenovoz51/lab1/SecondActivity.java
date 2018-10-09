@@ -2,6 +2,9 @@ package com.example.lenovoz51.lab1;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Lenovo Z51 on 2018-09-23.
@@ -37,7 +41,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.secondactivitydesign);
-
+        Random ran = new Random();
         mylist = (ListView) findViewById(R.id.listView);
         rikiuoti = (Button) findViewById(R.id.rikiavimo);
         atrinkti = (Button) findViewById(R.id.atrinkimo);
@@ -46,6 +50,13 @@ public class SecondActivity extends AppCompatActivity {
         context = this;
         raide = (EditText) findViewById(R.id.salyga);
         nauji = new ArrayList<>();
+        int red = ran.nextInt(255);
+        int blue = ran.nextInt(255);
+        int green = ran.nextInt(255);
+        int color = Color.rgb(red,green,blue);
+        ColorDrawable d = new ColorDrawable(color);
+        mylist.setDivider(d);
+        mylist.setDividerHeight(3);
         Intent intent = getIntent();
         if(intent.getBooleanExtra("flag",true)){
             Bundle bundle = intent.getExtras();
